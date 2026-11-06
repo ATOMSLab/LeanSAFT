@@ -6,7 +6,7 @@ import LeanSAFT.Scalar
 meta import LeanSAFT.Scalar
 
 /-!
-# Tests for `LeanSAFT.Scalar`
+# Execution checks for `LeanSAFT.Scalar`
 
 Each formula below is written once over the scalar classes, then
 * run at `Float` (`#guard`),
@@ -18,7 +18,7 @@ generic text (literals, `^`, decimal constants) elaborates to *exactly* the term
 Mathlib would build. A mismatched instance would make them fail.
 -/
 
-namespace LeanSAFT.Test
+namespace LeanSAFT.Execution
 
 open ScalarLike RationalLike
 
@@ -113,4 +113,4 @@ def bisect [RationalLike K] (f : K → K) (lo hi : K) : ℕ → K
   let r := bisect (fun x : ℚ => x ^ 3 - 2) 1 2 30
   |r ^ 3 - 2| < 1 / 10 ^ 8
 
-end LeanSAFT.Test
+end LeanSAFT.Execution
