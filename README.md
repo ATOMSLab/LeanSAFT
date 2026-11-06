@@ -113,8 +113,23 @@ an input, convert it to a Lean file next to the JSON:
 lean --run Input/json2lean.lean Input/my_input.json
 ```
 
-`lake build` compiles every file in `Input/`. A misspelled or missing key, a
-wrong value type, or an unknown model name is a build error.
+`lake build` compiles every file in `Input/`, and compiling a generated file
+checks its input at three levels:
+
+- shape: a misspelled, missing or extra key, a wrong value type, or an unknown
+  model name is a type error;
+- consistency: one density and one mole-fraction row per state point, one mole
+  fraction per component, at least one component (proof fields of
+  `ModelSelectorInput`, discharged by `simp`);
+- values: positive temperatures, densities and segment parameters, mole
+  fractions in `[0, 1]` that sum to one exactly
+  (`ModelSelectorInput.WellFormed`, proved by `norm_num` on the exact
+  decimals).
+
+The generated definition `myInput (K : Type) [RationalLike K]` is polymorphic
+in the scalar type, like the rest of the library: `myInput Float` is what an
+equation of state runs on, `myInput ℝ` is what the theorems are about, and
+`myInput_wellFormed` is the proof that the latter is well formed.
 
 ## Updating dependencies
 
