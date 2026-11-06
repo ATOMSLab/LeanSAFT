@@ -1,0 +1,28 @@
+name = "LeanSAFT"
+defaultTargets = ["LeanSAFT"]
+testDriver = "LeanSAFTTest"
+
+[leanOptions]
+pp.unicode.fun = true # pretty-prints `fun a ↦ b`
+autoImplicit = false
+relaxedAutoImplicit = false
+
+# Lean, Mathlib and Physlib must move together. Physlib pins the Mathlib
+# release it builds against (see its lakefile.toml); keep `mathlib` below on
+# that same tag and `lean-toolchain` on the matching Lean release.
+
+[[require]]
+name = "Physlib"
+git = "https://github.com/leanprover-community/physlib.git"
+rev = "master"
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "v4.35.0"
+
+[[lean_lib]]
+name = "LeanSAFT"
+
+[[lean_lib]]
+name = "LeanSAFTTest"
