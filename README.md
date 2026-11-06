@@ -58,8 +58,9 @@ archives in `~/.cache/mathlib`.
    lake build
    ```
 
-5. **Run the tests.** This builds `LeanSAFTTest`, whose `#guard` checks run
-   the example formulas at `Float` and `ℚ`. A failed check fails the build.
+5. **Run the execution checks.** This builds `Execution`, whose `#guard`
+   checks run the example formulas at `Float` and `ℚ`. A failed check fails
+   the build.
 
    ```bash
    lake test
@@ -85,9 +86,22 @@ Write each formula once, over a scalar type `K`, using the classes in
 The same definition runs at `Float`, can be evaluated exactly at `ℚ` when it
 is rational, and is proved about at `ℝ`. At `ℝ` it unfolds to plain Mathlib
 terms, so `simp`, `ring` and `positivity` work on it directly.
-[`LeanSAFTTest/Scalar.lean`](LeanSAFTTest/Scalar.lean) has worked examples:
+[`Execution/Scalar.lean`](Execution/Scalar.lean) has worked examples:
 Carnahan–Starling, the PC-SAFT segment diameter, the Mie prefactor, 2B
 association, and mixture sums.
+
+## Project layout
+
+| Folder | Contents |
+| --- | --- |
+| [`LeanSAFT/`](LeanSAFT/) | Core library: the scalar classes and the SAFT API map |
+| [`PerturbationTheory/`](PerturbationTheory/) | Wertheim and Barker–Henderson perturbation theory |
+| [`ThermoDerivatives/`](ThermoDerivatives/) | Properties from derivatives of the Helmholtz free energy |
+| [`Execution/`](Execution/) | Formulas run at `Float` and `ℚ` and checked with `#guard`, via `lake test` |
+| [`Input/`](Input/) | JSON model inputs and the schema they are checked against |
+
+Each folder is its own Lean library. Any `.lean` file you add to one is
+compiled by `lake build`; `Execution/` is compiled by `lake test`.
 
 ## Input files
 

@@ -1,6 +1,6 @@
 name = "LeanSAFT"
-defaultTargets = ["LeanSAFT", "Input"]
-testDriver = "LeanSAFTTest"
+defaultTargets = ["LeanSAFT", "Input", "PerturbationTheory", "ThermoDerivatives"]
+testDriver = "Execution"
 
 [leanOptions]
 pp.unicode.fun = true # pretty-prints `fun a ↦ b`
@@ -25,10 +25,18 @@ rev = "v4.35.0"
 name = "LeanSAFT"
 
 [[lean_lib]]
-name = "LeanSAFTTest"
+name = "Execution"
 
 # JSON input files and their generated Lean twins. Building this library is
 # what checks each input against Input/Schema.lean.
 [[lean_lib]]
 name = "Input"
 globs = ["Input.+"]
+
+[[lean_lib]]
+name = "PerturbationTheory"
+globs = ["PerturbationTheory.+"]
+
+[[lean_lib]]
+name = "ThermoDerivatives"
+globs = ["ThermoDerivatives.+"]

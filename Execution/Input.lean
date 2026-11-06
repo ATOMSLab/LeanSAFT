@@ -13,7 +13,7 @@ reading is ordinary data that runs; its `ℝ` reading is what
 `..._wellFormed` is about. Both come from the same literals.
 -/
 
-namespace LeanSAFT.Test
+namespace LeanSAFT.Execution
 
 open LeanSAFT.Input
 
@@ -29,4 +29,4 @@ example : (propaneSoftsaftModelSelectorInput ℝ).model.components.map (·.m) = 
 example : (propaneSoftsaftModelSelectorInput ℝ).WellFormed :=
   propaneSoftsaftModelSelectorInput_wellFormed
 
-end LeanSAFT.Test
+end LeanSAFT.Execution
