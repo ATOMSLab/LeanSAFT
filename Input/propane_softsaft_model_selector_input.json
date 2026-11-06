@@ -1,0 +1,26 @@
+{
+  "model": {
+    "eos_options": {
+      "eos_model": "soft_saft"
+    },
+    "components": [
+      {
+        "name": "propane",
+        "m": 2.002,
+        "sigmaA": 4.019,
+        "epsilonK": 246.03,
+        "Mw": 44.0956,
+        "polar": {
+          "type": "none",
+          "muCm": 0.0,
+          "QCm2": 0.0,
+          "xp": 0.0
+        }
+      }
+    ]
+  },
+  "T_K": [300.0],
+  "rho_mol_m3": [1000.0],
+  "X": [[1.0]],
+  "properties": ["eos_interface", "pressure", "response_properties"]
+}
