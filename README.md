@@ -89,6 +89,19 @@ terms, so `simp`, `ring` and `positivity` work on it directly.
 Carnahan–Starling, the PC-SAFT segment diameter, the Mie prefactor, 2B
 association, and mixture sums.
 
+## Input files
+
+Model-selector inputs are JSON files in [`Input/`](Input/). The format is
+defined by the Lean types in [`Input/Schema.lean`](Input/Schema.lean). To add
+an input, convert it to a Lean file next to the JSON:
+
+```bash
+lean --run Input/json2lean.lean Input/my_input.json
+```
+
+`lake build` compiles every file in `Input/`. A misspelled or missing key, a
+wrong value type, or an unknown model name is a build error.
+
 ## Updating dependencies
 
 Lean, Mathlib and Physlib must be updated together:

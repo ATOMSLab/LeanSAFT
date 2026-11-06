@@ -1,5 +1,5 @@
 name = "LeanSAFT"
-defaultTargets = ["LeanSAFT"]
+defaultTargets = ["LeanSAFT", "Input"]
 testDriver = "LeanSAFTTest"
 
 [leanOptions]
@@ -26,3 +26,9 @@ name = "LeanSAFT"
 
 [[lean_lib]]
 name = "LeanSAFTTest"
+
+# JSON input files and their generated Lean twins. Building this library is
+# what checks each input against Input/Schema.lean.
+[[lean_lib]]
+name = "Input"
+globs = ["Input.+"]
